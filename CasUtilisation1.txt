@@ -1,0 +1,97 @@
+Date de debut 05.02.2026 a 00h00
+
+ETAPES d'automatisation reseaux avec python gestion proactive pour decrire une importance optimale, et disponibilite continue.
+
+automatisation : processuce transformantion profonde sur la maniere de consevoir, de deployer, de maintenir des infrastructures reseaux
+
+Etape 1 : Configuration et deploiement des periferique pour reduire les erreurs et le temps de Configuration
+
+Etape 2 : Surveillance et analyse de reseaux
+
+Etape 3 : Depanage des incidents
+
+Etape 4 : automatisation de la sauvegarde, le deploiement et la comparaison des configuration reseaux
+
+Etape 5 : Orchestration des reseaux
+
+Avantages de l'automatisation reseaux :
+ - Ameliorer l'efficaciter et de la productivites aux admin reseaux
+ - Reductions d'erreurs humaine
+ - L'amelioration de la visibiliter et du controle
+ - Augmentation de l'agiliter de l'entreprise
+ - Reduction des couts d'exploitation du reseaux.
+
+python est choisis ici car: il est facile, sythaxe claire, il est polyvalent car il couvre un vaste domaine des bibliothequs pour 
+le reseaux.
+
+Etape 0 : Creation d'une environnement virtuel pour le project et son activation !!! Tres important
+        code : $ python3 -m venv .venv
+               $ source .venv/bin/activate
+        
+                                    Etude sur les variables du type bit et byte
+
+Syntaxe de declaration : variable = bin(10) # retourne un nombre binaire de 10
+                       : byteu = 0b1010 # le nombre 10 en byte le prefixe 0b du debut le specifie.
+                                         # si nous appelons le byte il va retourner le meme nombre
+
+Les lettre peuvent etre aussi en byte en fonction que ses '' ou "" soient preceder par un b ou un .encode()
+Pour la conversion d'un byte en decimal on fera:
+
+int('1010', 2) # le 2 pour specifier que c'est en base 2.
+
+            A. Operation sur les binaires
+
+AND ou (&), OR (|), XOR (^), NOT (~) , Pour le decalage on a (>> : a droite, << : a gauche)
+
+Remarque important, quand nous faisons les Operations sur les bit pour la logique ex (0b1010), l'operateur logique evalu valeur par valeur
+
+·l'operateur NOT ou ~ : Inverse la notation des valeurs, la ou il ya 1 il le change en 0 et la ou il a trouver 0 il le transforme en 1 ca c'est tres important pour tous. => ~byteu = -(byteu+1) = -11. cette operation est dit COMPLEMENT A 2.
+
+exemple : pour 0b1010 & 0b1100 on a :
+         0b1000, car en comparant on pour l'operateur logique et on auras.
+                 que 1 et 1 = 1, 0 et 1 = 0, 1 et 0 = 0 et en fin 0 et 0 = 0
+                 D'ou 0b1010 & 0b1100 = 0b1000 = 8.
+                 
+
+ ·Pour un decalage a gauche d'un nombre (binaire,float,...) , on fait la multiplication du nombre par 2, n fois
+
+ ·Pour un decalage a droite d'un nomber (binaire, int,...), on fait la division du nombre par 2, n fois
+
+exemple : 10 >> 1 = 5, 10 >> 2 = 2 car prends seulement la partie entiere
+
+Cette methode de decalage est tres capitale car elle permet une manipulation fin et efficace des donnee binaires telque la gestion des addresse IP, et la construiction des paquets.
+
+                    Convertissons alors une adresse ip en binaire et l'Inverse
+ip_addr = "192.168.1.13"
+
+    Premiere Etape, Decouper l'adresse en des octets.
+    ==> "192" + "168" + "1" + "13" on utulisera la methode split pour se faire en se basant sur le separateur "."
+
+    Ainsi split vas nous retourner une liste, le premier elemen converti sur 08b ou 8bites tous simplement a pour Syntaxe:
+            binary_array =[]
+
+            binary_array.append(format(int(octets[0]), '08b'))
+            binary_array.append(format(int(octets[1]), '08b'))
+            binary_array.append(format(int(octets[2]), '08b'))
+            binary_array.append(format(int(octets[3]), '08b'))
+
+            ip_bin = ''.join(binary_array) # joindre les éléments de la liste en une seule chaîne de caractères
+
+            convertir l'ip binaire en ip adresse
+
+            octets_renv_list = []
+            octets_renv_list.append(ip_bin[0:8])
+            octets_renv_list.append(ip_bin[8:16])
+            octets_renv_list.append(ip_bin[16:24])
+            octets_renv_list.append(ip_bin[24:32])
+
+            Apres retournons a la forme presque initiale des valeurs de la liste sur la base 2.
+
+            octets_renv_list[0] = str(int(octets_renv_list[0], 2))
+            octets_renv_list[1] = str(int(octets_renv_list[1], 2))
+            octets_renv_list[2] = str(int(octets_renv_list[2], 2))
+            octets_renv_list[3] = str(int(octets_renv_list[3], 2))
+
+            ip_renv = '.'.join(octets_renv_list) # joindre les éléments de la liste en une seule chaîne de caractères.
+
+            Remarque important, l'address ip publique c'est l'inverse du code bit de l'address ip prive
