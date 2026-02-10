@@ -542,6 +542,6 @@ user = Utilisateur("Alice", 30)
 
 ---
 
-**Auteur :** TFCProject  
+**Auteur :**Jhonsard  
 **Licence :** À définir  
 **Version :** 1.0.0
