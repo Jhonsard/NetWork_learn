@@ -2,7 +2,7 @@ def Validat_enter(argfunction):
     '''
     Decorateur de validation
     '''
-    def nouvelle_actiion(self, *args, **kwargs):
+    def nouvelle_action(self, *args, **kwargs):
         if any(arg < 0 for arg in args):
             print("les arguments ne peuvent etre negatives")
             return
